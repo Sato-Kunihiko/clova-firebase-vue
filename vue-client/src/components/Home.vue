@@ -43,6 +43,7 @@ export default {
     this.loadData()
   },
   methods: {
+    /* Sync database */
     loadData () {
       const ref = firebase.firestore().collection('items')
       ref.onSnapshot(querySnapshot => {
