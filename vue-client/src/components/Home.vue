@@ -43,9 +43,10 @@ export default {
     this.loadData()
   },
   methods: {
-    /* Sync database */
+    /* Sync databasesu */
     loadData () {
       const ref = firebase.firestore().collection('items')
+        .orderBy('timestamp')
       ref.onSnapshot(querySnapshot => {
         this.data = []
         querySnapshot.forEach(doc => {
