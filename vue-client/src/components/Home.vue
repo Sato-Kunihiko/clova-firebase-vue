@@ -5,9 +5,13 @@
 	    :items="displayItems"
 	    class="elevation-1"
 	  >
-	
+
+    <template slot="headers" slot-scope="props">
+      <th class="text-md-center">{{ props.headers[0].value }}</th>
+    </template>
+
 		<template slot="items" slot-scope="props">
-			<td>{{ props.item.message }}</td>
+			<td class="text-md-center">{{ props.item.message }}</td>
 		</template>
 		      
 	  <template slot="no-data">
