@@ -1,0 +1,17 @@
+{
+  "name": "clova-extension-server",
+  "version": "1.0.0",
+  "description": "clova extension server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kunihiko Sato",
+  "license": "ISC",
+  "dependencies": {
+    "@line/clova-cek-sdk-nodejs": "^1.1.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "firebase": "^5.7.0"
+  }
+}
