@@ -11,7 +11,7 @@
     </template>
 
 		<template slot="items" slot-scope="props">
-			<td class="text-md-center">{{ props.item.message }}</td>
+			<td class="text-xs-center">{{ props.item.message }}</td>
 		</template>
 		      
 	  <template slot="no-data">
@@ -36,9 +36,6 @@ export default {
     }
   },
   computed: {
-    dataId () {
-      return this.$route.params.id
-    },
     displayItems () {
       return this.data
     }
@@ -65,5 +62,3 @@ export default {
   }
 }
 </script>
-
-
