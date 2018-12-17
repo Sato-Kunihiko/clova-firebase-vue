@@ -1,6 +1,6 @@
 const admin = require('firebase-admin');
 
-var serviceAccount = require('./key/serviceAccountKey.json');
+const serviceAccount = require('./key/serviceAccountKey.json');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -62,9 +62,9 @@ function write_database(message) {
 
     const timestamp = admin.firestore.Timestamp.now();
 
-    var db = admin.firestore();
+    const db = admin.firestore();
     // Add a new item with a generated id.
-    var addDoc = db.collection('items').add({
+    const addDoc = db.collection('items').add({
         message: message,
         timestamp: timestamp,
     }).then(ref => {
