@@ -1,3 +1,11 @@
+const admin = require('firebase-admin');
+
+var serviceAccount = require('./key/serviceAccountKey.json');
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+});
+
 const clova = require('@line/clova-cek-sdk-nodejs');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -14,14 +22,15 @@ const clovaSkillHandler = clova.Client
   .onIntentRequest(async responseHelper => {
     const intent = responseHelper.getIntentName();
     const sessionId = responseHelper.getSessionId();
-
     switch (intent) {
       case 'test':
+        const slot = responseHelper.getSlots()["greeting"]
         responseHelper.setSimpleSpeech({
           lang: 'ja',
           type: 'PlainText',
-          value: '文字に書き起こしました',
+          value: slot + 'と書き起こしました',
         });
+        write_database(slot)
         break;
     }
   })
@@ -48,3 +57,17 @@ if(!isNaN(process.env.PORT_APP)) {
 }
 console.log(port)
 app.listen(port)
+
+function write_database(message) {
+
+    const timestamp = admin.firestore.Timestamp.now();
+
+    var db = admin.firestore();
+    // Add a new item with a generated id.
+    var addDoc = db.collection('items').add({
+        message: message,
+        timestamp: timestamp,
+    }).then(ref => {
+        console.log('Added item with ID: ', ref.id);
+    });
+}
