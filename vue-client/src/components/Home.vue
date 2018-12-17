@@ -5,9 +5,13 @@
 	    :items="displayItems"
 	    class="elevation-1"
 	  >
-	
+
+    <template slot="headers" slot-scope="props">
+      <th class="text-md-center">{{ props.headers[0].value }}</th>
+    </template>
+
 		<template slot="items" slot-scope="props">
-			<td>{{ props.item.message }}</td>
+			<td class="text-xs-center">{{ props.item.message }}</td>
 		</template>
 		      
 	  <template slot="no-data">
@@ -32,9 +36,6 @@ export default {
     }
   },
   computed: {
-    dataId () {
-      return this.$route.params.id
-    },
     displayItems () {
       return this.data
     }
@@ -43,8 +44,10 @@ export default {
     this.loadData()
   },
   methods: {
+    /* Sync databasesu */
     loadData () {
       const ref = firebase.firestore().collection('items')
+        .orderBy('timestamp')
       ref.onSnapshot(querySnapshot => {
         this.data = []
         querySnapshot.forEach(doc => {
@@ -59,5 +62,3 @@ export default {
   }
 }
 </script>
-
-
