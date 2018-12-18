@@ -60,8 +60,8 @@ app.listen(port)
 
 function write_database(message) {
 
-    const timestamp = admin.firestore.Timestamp.now();
-
+    const timestamp = admin.firestore.FieldValue.serverTimestamp();
+    
     const db = admin.firestore();
     // Add a new item with a generated id.
     const addDoc = db.collection('items').add({
