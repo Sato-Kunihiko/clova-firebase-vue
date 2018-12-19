@@ -13,5 +13,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 
-/vue-client/src/main.js
+/vue-client/config/dev.env.js
 /clova-extension-server/key/serviceAccountKey.json
