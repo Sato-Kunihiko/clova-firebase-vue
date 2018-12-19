@@ -1,25 +1,25 @@
 <template>
 
-	<v-data-table
-	    :headers="headers"
-	    :items="displayItems"
-	    class="elevation-1"
-	  >
+  <v-data-table
+      :headers="headers"
+      :items="displayItems"
+      class="elevation-1"
+    >
 
     <template slot="headers" slot-scope="props">
       <th class="text-md-center">{{ props.headers[0].value }}</th>
     </template>
 
-		<template slot="items" slot-scope="props">
-			<td class="text-xs-center">{{ props.item.message }}</td>
-		</template>
-		      
-	  <template slot="no-data">
-	    <v-btn color="primary" @click="loadData">Reload</v-btn>
-	  </template>
-	  
-	</v-data-table>
-	  
+    <template slot="items" slot-scope="props">
+      <td class="text-xs-center">{{ props.item.message }}</td>
+    </template>
+          
+    <template slot="no-data">
+      <v-btn color="primary" @click="loadData">Reload</v-btn>
+    </template>
+    
+  </v-data-table>
+    
 </template>
 
 <script>
